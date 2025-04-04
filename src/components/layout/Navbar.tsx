@@ -68,13 +68,13 @@ const Navbar = () => {
           </div>
 
           {/* Right Side - Join Waitlist Button */}
-          <div className="flex items-center">
+          <div className="justify-end flex items-center">
             {isAuthenticated ? (
               <ProfileDropdown />
             ) : (
               <button
                 onClick={() => navigate('/waitlist')}
-                className="justify-end bg-[#3D2CA1] hover:bg-[#2E1F7A] text-white px-4 py-2 rounded-full transition-colors duration-300 font-medium"
+                className="bg-[#3D2CA1] hover:bg-[#2E1F7A] text-white px-4 py-2 rounded-full transition-colors duration-300 font-medium"
               >
                 Join Waitlist
               </button>
