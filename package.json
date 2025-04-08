@@ -7,12 +7,19 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "amplify": "amplify",
+    "deploy": "npx ampx pipeline-deploy --branch main --app-id d1q2r3s4t5u6v7w8x9y0z",
+    "sandbox": "npx ampx sandbox"
   },
   "dependencies": {
-    "@aws-amplify/ui-react": "^6.10.0",
+    "@aws-amplify/ui-react": "^6.1.6",
+    "@aws-amplify/backend": "^1.15.0",
+    "@aws-amplify/backend-cli": "^1.6.0",
     "@types/node": "^22.14.0",
-    "aws-amplify": "^6.14.1",
+    "aws-amplify": "^6.0.12",
+    "aws-cdk-lib": "^2.180.0",
+    "constructs": "^10.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^7.4.1"

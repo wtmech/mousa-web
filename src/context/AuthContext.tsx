@@ -6,10 +6,10 @@ import { signIn, signOut as amplifySignOut, getCurrentUser, confirmSignIn, updat
 Amplify.configure({
   Auth: {
     Cognito: {
-      userPoolId: 'us-east-2_87DAlf6V4',
-      userPoolClientId: '7hq5poljek5fl2u4e4pii0rapq',
+      userPoolId: import.meta.env.VITE_USER_POOL_ID,
+      userPoolClientId: import.meta.env.VITE_USER_POOL_CLIENT_ID,
       signUpVerificationMethod: 'code',
-      identityPoolId: 'us-east-2:56c49cac-6d19-4fd9-8cbf-30aee2464076',
+      identityPoolId: import.meta.env.VITE_IDENTITY_POOL_ID,
     },
   },
 });
@@ -99,16 +99,18 @@ function AuthProvider({ children }: { children: ReactNode }) {
 
   const handleUpdatePhoneNumber = async (phoneNumber: string) => {
     try {
-      if (!currentUsername) throw new Error('No username found');
+      if (!currentUsername) {
+        throw new Error('No username found');
+      }
+
       await updateUserAttributes({
         userAttributes: {
-          phone_number: phoneNumber
-        }
+          phone_number: phoneNumber,
+        },
       });
-      setIsAuthenticated(true);
     } catch (error) {
       console.error('Error updating phone number:', error);
-      throw error;
+      throw new Error('Failed to update phone number');
     }
   };
 
